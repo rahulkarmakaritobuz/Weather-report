@@ -1,0 +1,37 @@
+@import url('https://fonts.googleapis.com/css2?family=Merriweather+Sans:wght@300;400;600;700&display=swap');
+body {
+    background-color :rgb(83, 83, 215);
+    color: white;
+    font-family: 'Merriweather Sans', sans-serif;
+}
+/* .sunny,.cloud {
+    display: none;
+} */
+
+.location {
+    margin: 5rem 0rem 3rem 0rem;
+}
+.actual-temp {
+    font-size: 4rem;
+}
+.actual-temp::after {
+    position: absolute;
+    content: "o";
+    font-size: 1.5rem;
+}
+.feels-like {
+    color: rgb(38, 143, 219);
+    font-size: 1.5rem;
+}
+.feels-like::after {
+    position: absolute;
+    content: "o";
+    font-size: 1rem;
+}
+.weather-icon {
+    font-size: 5rem;
+    margin-right: 3rem;
+}
+.details {
+    font-size: 2rem;
+}
