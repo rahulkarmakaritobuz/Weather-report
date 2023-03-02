@@ -1,37 +1,83 @@
-@import url('https://fonts.googleapis.com/css2?family=Merriweather+Sans:wght@300;400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Merriweather+Sans:wght@300;400;500;600;700;800&display=swap');
+
 body {
-    background-color :rgb(83, 83, 215);
-    color: white;
+    background-color: rgb(81, 144, 210);
+    color: aliceblue;
     font-family: 'Merriweather Sans', sans-serif;
 }
+
 /* .sunny,.cloud {
     display: none;
 } */
 
 .location {
+    font-weight: 600;
     margin: 5rem 0rem 3rem 0rem;
 }
-.actual-temp {
-    font-size: 4rem;
+
+.weather-data {
+    flex-direction: column;
 }
+
+.actual-temp {
+    color: white;
+    font-weight: 700;
+    font-size: 4.1rem;
+}
+
 .actual-temp::after {
     position: absolute;
     content: "o";
-    font-size: 1.5rem;
+    font-size: 2rem;
 }
+
 .feels-like {
-    color: rgb(38, 143, 219);
+    color: rgb(170, 202, 229);
     font-size: 1.5rem;
 }
+
 .feels-like::after {
     position: absolute;
     content: "o";
     font-size: 1rem;
 }
+
 .weather-icon {
+    color: rgb(196, 223, 249);
     font-size: 5rem;
-    margin-right: 3rem;
+    z-index: 100;
+    /* margin-right: 3rem; */
+}
+.fa-sun {
+
+    z-index: 1;
 }
 .details {
-    font-size: 2rem;
+    font-weight: 400;
+    max-width: 90%;
+    font-size: 1.8rem;
+}
+.setLocation {
+    margin-top: 2rem;
+    border: 1px solid rgb(159, 205, 205);
+}
+
+@media(min-width:375px) {
+    .details {
+        max-width: 80%;
+    }
+
+    .weather-data {
+        flex-direction: row;
+    }
+
+    .weather-icon {
+        margin-right: 3rem;
+    }
+}
+
+@media(min-width:768px) {
+    .details {
+        max-width: 50%;
+    }
 }
