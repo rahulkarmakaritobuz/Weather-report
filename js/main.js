@@ -39,7 +39,7 @@ let setValue = () => {
             weatherIcon.className += " fa-cloud-sun ";
         }
         if (result.current.condition.text == "Sunny") {
-            weatherIcon.className = " fa-sun text-warning";
+            weatherIcon.className = " weather-icon fa-sun text-warning";
         }
     })
 }
