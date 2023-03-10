@@ -35,7 +35,7 @@ let setValue = () => {
     val +
     "&aqi=no";
   // console.log(api);
-  let data = getWeatherData().then((result) => {
+  getWeatherData().then((result) => {
     console.log(result);
     // place.innerText = result.location.name;
     actualTemp.innerText = result.current.temp_f;
@@ -72,12 +72,71 @@ let setValue = () => {
   });
 };
 
-document.addEventListener('keyup', (e) => {
-    console.log(e);
-    if(e.key==="Enter"){
-        setValue();
+// Input suggestion part
+let suggestions = [
+  "Kolkata",
+  "London",
+  "Dubai",
+  "Delhi",
+  "Solon",
+  "Kathmandu",
+  "Amazonia",
+  "Africa",
+  "Goa",
+  "Mumbai",
+  "Bangalore",
+  "Hyderabad",
+  "Surat",
+  "Pune",
+];
+
+const searchWrapper = document.querySelector(".search-input");
+const suggBox = searchWrapper.querySelector(".autocom-box");
+
+setLocation.onkeyup = (e) => {
+  let userData = e.target.value;
+  let emptyArray = [];
+  if (userData) {
+    emptyArray = suggestions.filter((data) => {
+      return data.toLocaleLowerCase().startsWith(userData.toLocaleLowerCase());
+    });
+    emptyArray = emptyArray.map((data) => {
+      return (data = `<li>${data}</li>`);
+    });
+    searchWrapper.classList.add("active");
+
+    showSuggestions(emptyArray);
+    let allList = suggBox.querySelectorAll("li");
+    for (let i = 0; i < allList.length; i++) {
+      allList[i].setAttribute("onclick", "select(this)");
     }
+  } else {
+    searchWrapper.classList.remove("active");
+  }
+};
+
+function select(element) {
+  let selectData = element.textContent;
+  setLocation.value = selectData;
+  searchWrapper.classList.remove("active");
+  setValue();
+}
+
+function showSuggestions(list) {
+  let listData;
+  if (!list.length) {
+    let userValue = setLocation.value;
+    listData = `<li>${userValue}</li>`;
+  } else {
+    listData = list.join("");
+  }
+  suggBox.innerHTML = listData;
+}
+
+document.addEventListener("keyup", (e) => {
+  console.log(e);
+  if (e.key === "Enter") {
+    searchWrapper.classList.remove("active");
+    setValue();
+  }
 });
-
-//V4
-

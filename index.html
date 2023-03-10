@@ -4,26 +4,36 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-   
+
     <link rel="stylesheet" href="./assets/css/style.css" />
     <title>Weather report</title>
   </head>
 
   <body>
     <nav class="navigation">
-      <a href="#" target="_"><img src="./assets/images/share.svg" alt=""></a>
-      <input type="text" class="location" id="setLocation"  placeholder="Set your location here"/>
-      <a href="#" target="_"><img src="./assets/images/menu.svg" alt=""></a>
+      <a href="#" target="_"><img src="./assets/images/share.svg" alt="" /></a>
+      <div class="search-input">
+        <input
+          type="text"
+          class="location"
+          id="setLocation"
+          placeholder="Set your location here"
+        />
+        <div class="autocom-box">
+          <!-- here list are inserted from javascript -->
+        </div>
+      </div>
+      <a href="#" target="_"><img src="./assets/images/menu.svg" alt="" /></a>
     </nav>
     <section class="d-flex flex-column align-items-center weather">
       <!-- <h1 id="location" class="location">location</h1> -->
       <!-- <div class="blink"> -->
-        <!-- <input type="text" class="location" id="setLocation" oninput="setValue()" placeholder="Set your location"/> -->
-        
+      <!-- <input type="text" class="location" id="setLocation" oninput="setValue()" placeholder="Set your location"/> -->
+
       <!-- </div> -->
       <div class="weather-data">
         <!-- <div class="fa weather-icon fa-sun-cloud text-warning " id="cloud"></div> -->
-        <div class=" weather-icon" id="weatherIcon"></div>
+        <div class="weather-icon" id="weatherIcon"></div>
         <div class="temperature">
           <div class="actual-temp" id="actualTemp">0F</div>
           <div class="feels-like" id="feelsLike">0F</div>
@@ -42,5 +52,6 @@
     </section>
 
     <script src="./js/main.js"></script>
+    <script src="./js/suggestionTest.js"></script>
   </body>
 </html>
