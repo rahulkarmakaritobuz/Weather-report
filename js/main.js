@@ -17,10 +17,13 @@ const getWeatherData = async () => {
 
 let createIcon = (path) => {
   let weatherIcon = document.getElementById("weatherIcon");
+
   while (weatherIcon.firstChild) {
     weatherIcon.removeChild(weatherIcon.firstChild);
   }
+
   let elem = document.createElement("img");
+
   elem.setAttribute("src", path);
   elem.setAttribute("alt", "Weather Icon");
   document.getElementById("weatherIcon").appendChild(elem);
@@ -99,6 +102,7 @@ const suggBox = searchWrapper.querySelector(".autocom-box");
 setLocation.onkeyup = (e) => {
   let userData = e.target.value;
   let emptyArray = [];
+
   if (userData) {
     emptyArray = suggestions.filter((data) => {
       return data.toLocaleLowerCase().startsWith(userData.toLocaleLowerCase());
@@ -110,6 +114,7 @@ setLocation.onkeyup = (e) => {
 
     showSuggestions(emptyArray);
     let allList = suggBox.querySelectorAll("li");
+
     for (let i = 0; i < allList.length; i++) {
       allList[i].setAttribute("onclick", "select(this)");
     }
@@ -120,6 +125,7 @@ setLocation.onkeyup = (e) => {
 
 function select(element) {
   let selectData = element.textContent;
+
   setLocation.value = selectData;
   searchWrapper.classList.remove("active");
   setValue();
@@ -127,6 +133,7 @@ function select(element) {
 
 function showSuggestions(list) {
   let listData;
+
   if (!list.length) {
     let userValue = setLocation.value;
     listData = `<li>${userValue}</li>`;
