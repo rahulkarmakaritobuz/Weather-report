@@ -1,4 +1,3 @@
-// const place = document.getElementById("location");
 const actualTemp = document.getElementById("actualTemp");
 const feelsLike = document.getElementById("feelsLike");
 const weatherIcon = document.getElementById("weatherIcon");
@@ -34,33 +33,31 @@ let setValue = () => {
     "http://api.weatherapi.com/v1/current.json?key=0c80b2b56f1943ada19100744230103&q=" +
     val +
     "&aqi=no";
-  // console.log(api);
   getWeatherData().then((result) => {
     console.log(result);
-    // place.innerText = result.location.name;
     actualTemp.innerText = result.current.temp_f;
     feelsLike.innerText = "Feels " + result.current.feelslike_f;
     console.log(result.current.condition.text);
 
     let weather = result.current.condition.text;
 
-    if (weather == "Mist") {
+    if (weather === "Mist") {
       createIcon(
         "./assets/images/amcharts_weather_icons_1.0.0/animated/cloudy-day-1.svg"
       );
-    } else if (weather == "Partly cloudy" || weather == "Cloudy") {
+    } else if (weather === "Partly cloudy" || weather === "Cloudy") {
       createIcon(
         "./assets/images/amcharts_weather_icons_1.0.0/animated/cloudy-day-3.svg"
       );
-    } else if (weather == "Snowy") {
+    } else if (weather === "Snowy") {
       createIcon(
         "./assets/images/amcharts_weather_icons_1.0.0/animated/snowy-2.svg"
       );
-    } else if (weather == "Rainy" || weather == "Light rain") {
+    } else if (weather === "Rainy" || weather === "Light rain") {
       createIcon(
         "./assets/images/amcharts_weather_icons_1.0.0/animated/rainy-7.svg"
       );
-    } else if (weather == "Clear" || weather == "Sunny") {
+    } else if (weather === "Clear" || weather === "Sunny") {
       createIcon(
         "./assets/images/amcharts_weather_icons_1.0.0/animated/day.svg"
       );
@@ -88,6 +85,12 @@ let suggestions = [
   "Hyderabad",
   "Surat",
   "Pune",
+  "Jaipur",
+  "Agra",
+  "Raipur",
+  "Kota",
+  "Allahabad",
+  "Durgapur",
 ];
 
 const searchWrapper = document.querySelector(".search-input");
