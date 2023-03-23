@@ -3,16 +3,12 @@ const feelsLike = document.getElementById("feelsLike");
 const weatherIcon = document.getElementById("weatherIcon");
 const setLocation = document.getElementById("setLocation");
 
-let api =
-  "http://api.weatherapi.com/v1/current.json?key=0c80b2b56f1943ada19100744230103&q=Kolkata&aqi=no";
-
-console.log(api);
+let api = "http://localhost:8080/";
 const getWeatherData = async () => {
-  console.log(api);
-  const response = await fetch(api).then((response) => {
-    return response.json();
+  let res = await fetch(api).then((res) => {
+    return res.json();
   });
-  return response;
+  return res;
 };
 
 let createIcon = (path) => {
@@ -30,17 +26,12 @@ let createIcon = (path) => {
 };
 
 let setValue = () => {
-  console.log(setLocation.value);
   let val = setLocation.value;
-  api =
-    "http://api.weatherapi.com/v1/current.json?key=0c80b2b56f1943ada19100744230103&q=" +
-    val +
-    "&aqi=no";
+  api = "http://localhost:8080/" + val;
+
   getWeatherData().then((result) => {
-    console.log(result);
-    actualTemp.innerText = result.current.temp_f;
-    feelsLike.innerText = "Feels " + result.current.feelslike_f;
-    console.log(result.current.condition.text);
+    actualTemp.innerText = result.current.tempF;
+    feelsLike.innerText = "Feels " + result.current.feelsLikef;
 
     let weather = result.current.condition.text;
 
@@ -144,7 +135,6 @@ function showSuggestions(list) {
 }
 
 document.addEventListener("keyup", (e) => {
-  console.log(e);
   if (e.key === "Enter") {
     searchWrapper.classList.remove("active");
     setValue();
